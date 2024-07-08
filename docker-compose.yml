@@ -1,0 +1,24 @@
+services:
+
+  villadewata:
+    container_name: DewataVilla
+    build: .
+    volumes:
+      - ./laravel_project:/var/www/html
+    ports:
+      - 83:80
+  
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_bali
+    ports:
+    - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 82:80
+    environment:
+      - PMA_ARBITRARY=1
